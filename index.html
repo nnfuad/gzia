@@ -2,650 +2,476 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>President Ziaur Rahman | Visionary Leader</title>
-  <!-- Google Fonts: Modern & Elegant -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>President Ziaur Rahman | Visionary Leader | Dynamic Tribute</title>
+  <!-- Tailwind CSS + Google Fonts + Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- custom tailwind overrides / smooth behavior -->
   <style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
       font-family: 'Inter', sans-serif;
-      background-color: #0a0c10;
-      color: #eef2ff;
-      line-height: 1.5;
-      scroll-behavior: smooth;
     }
-
-    /* custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
+    body {
+      background: radial-gradient(circle at 10% 20%, #0a0f1c, #03060c);
     }
-    ::-webkit-scrollbar-track {
-      background: #1e1f2a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #c2a13f;
-      border-radius: 8px;
-    }
-
-    /* slick container & glass morphism */
-    .container {
-      max-width: 1280px;
+    /* custom 3D moving object styles (rotating morphing cube) */
+    .scene-3d {
+      width: 180px;
+      height: 180px;
+      perspective: 800px;
       margin: 0 auto;
-      padding: 0 28px;
     }
-
-    /* header / navbar - slick sticky */
-    .navbar {
-      position: sticky;
-      top: 0;
-      backdrop-filter: blur(16px);
-      background: rgba(10, 12, 16, 0.75);
-      border-bottom: 1px solid rgba(194, 161, 63, 0.25);
-      z-index: 100;
-      padding: 18px 0;
-      transition: all 0.3s ease;
-    }
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-    .logo {
-      font-size: 1.7rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #F5E7B2, #C2A13F);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo span {
-      font-weight: 800;
-      background: none;
-      color: #f5d97a;
-      -webkit-background-clip: unset;
-      background-clip: unset;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: #cdd9ff;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: 0.2s;
-      letter-spacing: 0.3px;
-    }
-    .nav-links a:hover {
-      color: #F5D97A;
-      border-bottom: 2px solid #C2A13F;
-      padding-bottom: 4px;
-    }
-
-    /* Hero section - cinematic */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
+    .cube {
+      width: 100%;
+      height: 100%;
       position: relative;
-      isolation: isolate;
+      transform-style: preserve-3d;
+      animation: spinCube 12s infinite linear;
     }
-    .hero::before {
-      content: "";
+    .cube-face {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+      border: 2px solid rgba(218, 185, 85, 0.7);
+      box-shadow: 0 0 20px rgba(218, 185, 85, 0.35);
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+
+    .cube-face::after {
+      content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 30%, rgba(194,161,63,0.08), transparent 70%);
-      z-index: -2;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.45));
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .hero-content h1 {
-      font-size: 3.6rem;
-      font-weight: 800;
-      line-height: 1.2;
-      background: linear-gradient(to right, #FFFFFF, #E8D49C);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1.2rem;
-    }
-    .hero-tagline {
-      font-size: 1.2rem;
-      color: #b9c3e6;
-      border-left: 3px solid #C2A13F;
-      padding-left: 1rem;
-      margin-bottom: 1.8rem;
-    }
-    .hero-desc {
-      color: #a7b3da;
-      margin-bottom: 2rem;
-      max-width: 90%;
-    }
-    .btn-group {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: #C2A13F;
-      border: none;
-      padding: 0.9rem 2rem;
-      font-weight: 600;
-      border-radius: 40px;
-      color: #0a0c10;
-      cursor: pointer;
-      transition: 0.2s;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .btn-primary:hover {
-      background: #e0bc64;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 20px -12px rgba(194,161,63,0.4);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid rgba(194,161,63,0.7);
-      padding: 0.85rem 2rem;
-      border-radius: 40px;
-      font-weight: 500;
-      color: #F5D97A;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .btn-outline:hover {
-      border-color: #C2A13F;
-      background: rgba(194,161,63,0.1);
-      transform: translateY(-2px);
-    }
-    .hero-image {
-      position: relative;
-    }
-    .hero-image img {
+
+    .cube-face img {
       width: 100%;
-      max-width: 400px;
-      border-radius: 32px;
+      height: 100%;
       object-fit: cover;
-      box-shadow: 0 25px 40px -15px rgba(0,0,0,0.5);
-      border: 2px solid rgba(194,161,63,0.3);
-      transition: 0.3s;
-      filter: brightness(1.02) contrast(1.05);
-    }
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      inset: -12px;
-      border-radius: 42px;
-      background: linear-gradient(135deg, rgba(194,161,63,0.2), transparent);
-      z-index: -1;
+      display: block;
     }
 
-    /* Legacy section */
-    .section {
-      padding: 100px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+    .cube-face-front  {
+      transform: rotateY(0deg) translateZ(90px);
     }
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
+
+    .cube-face-back {
+      transform: rotateY(180deg) translateZ(90px);
     }
-    .section-title span {
-      color: #C2A13F;
-      border-bottom: 2px solid currentColor;
-      padding-bottom: 6px;
+
+    .cube-face-right {
+      transform: rotateY(90deg) translateZ(90px);
     }
-    .legacy-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
+
+    .cube-face-left {
+      transform: rotateY(-90deg) translateZ(90px);
     }
-    .card {
-      background: rgba(20, 22, 32, 0.6);
+
+    .cube-face-top {
+      transform: rotateX(90deg) translateZ(90px);
+    }
+
+    .cube-face-bottom {
+      transform: rotateX(-90deg) translateZ(90px);
+    }
+    @keyframes spinCube {
+      0% { transform: rotateX(0deg) rotateY(0deg);}
+      100% { transform: rotateX(360deg) rotateY(360deg);}
+    }
+    /* hover cards extra glow */
+    .dynamic-card {
+      transition: all 0.25s ease;
       backdrop-filter: blur(4px);
-      border-radius: 28px;
-      padding: 2rem 1.8rem;
-      transition: 0.25s ease;
-      border: 1px solid rgba(194,161,63,0.2);
     }
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(194,161,63,0.5);
-      background: rgba(28, 30, 42, 0.7);
-      box-shadow: 0 20px 30px -15px rgba(0,0,0,0.4);
+    .dynamic-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 30px -12px rgba(194,161,63,0.3);
+      border-color: #c2a13f;
     }
-    .card i {
-      font-size: 2.5rem;
-      color: #D4AF5A;
-      margin-bottom: 1rem;
+    /* scroll behavior */
+    html {
+      scroll-behavior: smooth;
     }
-    .card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    .card p {
-      color: #b9c3e6;
-      font-size: 0.95rem;
-    }
-
-    /* Timeline slick */
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      max-width: 800px;
-      margin: 3rem auto 0;
-    }
-    .timeline-item {
-      display: flex;
-      gap: 1.5rem;
-      background: rgba(16, 18, 26, 0.6);
-      border-radius: 32px;
-      padding: 1.5rem;
-      backdrop-filter: blur(4px);
-      border-left: 5px solid #C2A13F;
-    }
-    .year {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: #F5D97A;
-      min-width: 100px;
-    }
-    .timeline-content h4 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-    .timeline-content p {
-      color: #b9c3e6;
-    }
-
-    /* quote slick */
-    .quote-section {
-      background: linear-gradient(145deg, #0f1119, #080a10);
-      border-radius: 48px;
-      padding: 3rem 2rem;
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .quote-text {
-      font-size: 1.6rem;
-      font-style: italic;
-      font-weight: 500;
-      max-width: 850px;
-      margin: 0 auto;
-      color: #e9eefc;
-    }
-    .quote-author {
-      margin-top: 1rem;
-      font-size: 1rem;
-      color: #C2A13F;
-      letter-spacing: 1px;
-    }
-
-    /* gallery / image slider */
-    .gallery {
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 2rem;
-    }
-    .gallery-card {
-      width: 240px;
-      border-radius: 24px;
-      overflow: hidden;
-      transition: 0.3s;
-      background: #151a24;
-      border: 1px solid #2c2f3e;
-    }
-    .gallery-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      transition: 0.4s;
-    }
-    .gallery-card:hover img {
-      transform: scale(1.05);
-    }
-    .gallery-caption {
-      padding: 0.8rem;
-      text-align: center;
-      font-weight: 500;
-      font-size: 0.8rem;
-      background: #0c0f16;
-      color: #ddd;
-    }
-
-    /* footer */
-    footer {
-      background: #05070c;
-      padding: 40px 0;
-      text-align: center;
-      color: #8f9bb5;
-      font-size: 0.85rem;
-      border-top: 1px solid rgba(194,161,63,0.2);
-    }
-
-    /* responsive */
-    @media (max-width: 880px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-desc {
-        max-width: 100%;
-      }
-      .btn-group {
-        justify-content: center;
-      }
-      .nav-container {
-        flex-direction: column;
-        gap: 12px;
-      }
-      .nav-links {
-        gap: 1.8rem;
-      }
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      .timeline-item {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      .year {
-        min-width: auto;
-      }
+    /* glass panel */
+    .glass-panel {
+      background: rgba(10, 15, 25, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(194,161,63,0.25);
     }
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="text-gray-200">
 
-<nav class="navbar">
-  <div class="container nav-container">
-    <div class="logo">PRESIDENT <span>ZIAUR RAHMAN</span></div>
-    <ul class="nav-links">
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#legacy">Legacy</a></li>
-      <li><a href="#timeline">Milestones</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-    </ul>
-  </div>
-</nav>
-
-<main>
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <h1>Ziaur Rahman<br>Bir Uttom</h1>
-        <div class="hero-tagline">7th President of Bangladesh • The Leader of the Nation</div>
-        <p class="hero-desc">A visionary statesman, military leader, and founder of the Bangladesh Nationalist Party (BNP). President Ziaur Rahman steered Bangladesh towards economic resilience, national unity, and international recognition. His legacy of courage and development continues to inspire millions.</p>
-        <div class="btn-group">
-          <button class="btn-primary" id="learnMoreBtn"><i class="fas fa-chevron-right"></i> Explore Legacy</button>
-          <button class="btn-outline" id="quoteBtn"><i class="fas fa-quote-left"></i> View Quote</button>
-        </div>
-      </div>
-      <div class="hero-image">
-        <!-- official style image with president zia (slick styled) -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Ziaur_Rahman_1979_cropped.jpg" alt="President Ziaur Rahman portrait" onerror="this.src='https://placehold.co/400x500/1e1f2a/C2A13F?text=President+Zia'">
+  <!-- Navigation Sticky -->
+  <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-lg border-b border-yellow-700/30 py-4">
+    <div class="container mx-auto px-6 flex flex-wrap justify-between items-center">
+      <div class="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">🇧🇩 PRESIDENT ZIA</div>
+      <div class="flex gap-6 text-sm font-medium">
+        <a href="#biography" class="hover:text-amber-400 transition">Life</a>
+        <a href="#achievements" class="hover:text-amber-400 transition">Legacy</a>
+        <a href="#19points" class="hover:text-amber-400 transition">19-Point</a>
+        <a href="#family" class="hover:text-amber-400 transition">Family & Politics</a>
+        <a href="#interactive" class="hover:text-amber-400 transition">Interactive</a>
       </div>
     </div>
-  </section>
+  </nav>
 
-  <!-- Legacy Stats / Slick Cards -->
-  <section id="legacy" class="section">
-    <div class="container">
-      <div class="section-title"><span>Enduring Legacy</span></div>
-      <div class="legacy-grid">
-        <div class="card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Economic Revival</h3>
-          <p>Initiated industrialization & food production reforms, turning Bangladesh into a developing economy during the late 70s.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-globe-asia"></i>
-          <h3>Foreign Diplomacy</h3>
-          <p>Strengthened ties with Muslim nations & SAARC founding member. Elevated Bangladesh's global standing.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-landmark"></i>
-          <h3>Nationalist Vision</h3>
-          <p>Founded BNP, introduced multiparty democracy, and promoted Bangladeshi nationalism over regionalism.</p>
-        </div>
-        <div class="card">
-          <i class="fas fa-award"></i>
-          <h3>Bir Uttom</h3>
-          <p>Hero of Liberation War 1971, declared Independence on behalf of Bangabandhu, recipient of highest gallantry award.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline milestones -->
-  <section id="timeline" class="section">
-    <div class="container">
-      <div class="section-title"><span>Historical Milestones</span></div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="year">1971</div>
-          <div class="timeline-content"><h4>Declaration of Independence</h4><p>On 27 March, Ziaur Rahman declared the independence of Bangladesh from Kalurghat radio station, inspiring the nation.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">1977</div>
-          <div class="timeline-content"><h4>Became President</h4><p>Took office after national referendum, initiating a period of political stability and economic reconstruction.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">1978</div>
-          <div class="timeline-content"><h4>Formation of BNP</h4><p>Founded Bangladesh Nationalist Party, introducing multi-party democracy after years of military rule.</p></div>
-        </div>
-        <div class="timeline-item">
-          <div class="year">1981</div>
-          <div class="timeline-content"><h4>Assassination & Legacy</h4><p>President Zia was martyred on 30 May 1981, but his ideals of development, nationalism and democracy persist.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Section with images of Zia -->
-  <section id="gallery" class="section">
-    <div class="container">
-      <div class="section-title"><span>Moments in History</span></div>
-      <div class="gallery">
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Ziaur_Rahman_in_1979_%28cropped%29.jpg" alt="President Zia official portrait" onerror="this.src='https://placehold.co/240x180/232530/C2A13F?text=Zia+Portrait'">
-          <div class="gallery-caption">Official Portrait, 1979</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Reagan_with_Ziaur_Rahman_1980_%28cropped%29.jpg/320px-Reagan_with_Ziaur_Rahman_1980_%28cropped%29.jpg" alt="President Zia with world leaders" onerror="this.src='https://placehold.co/240x180/232530/C2A13F?text=Diplomacy+Icon'">
-          <div class="gallery-caption">Meeting global leaders, 1980</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Ziaur_Rahman_Speaking_%28cropped%29.jpg" alt="Ziaur Rahman addressing nation" onerror="this.src='https://placehold.co/240x180/232530/C2A13F?text=Public+Address'">
-          <div class="gallery-caption">Addressing the Nation</div>
-        </div>
-        <div class="gallery-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/Ziaur_Rahman_Signature.jpg" alt="Signature and legacy" onerror="this.src='https://placehold.co/240x180/232530/C2A13F?text=Legacy+Icon'">
-          <div class="gallery-caption">Historic Signature & legacy</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Inspirational Quote Section -->
-  <div class="container" style="margin-bottom: 60px;">
-    <div class="quote-section" id="dynamicQuoteBlock">
-      <div class="quote-text" id="quoteDisplay">"Love and faith in the motherland, we shall build a happy and prosperous nation."</div>
-      <div class="quote-author">— President Ziaur Rahman</div>
-      <button id="randomQuoteBtn" style="margin-top: 20px; background: none; border: 1px solid #C2A13F; padding: 8px 20px; border-radius: 40px; color:#F5D97A; cursor:pointer; font-size:0.8rem;"><i class="fas fa-sync-alt"></i> Inspire Me</button>
-    </div>
-  </div>
-</main>
-
-<footer>
-  <div class="container">
-    <p>🇧🇩 Honoring the memory of President Ziaur Rahman — A leader who shaped modern Bangladesh | Tribute page for educational & inspirational purpose</p>
-    <p style="margin-top: 12px;"><i class="fas fa-leaf"></i> Slick design | Legacy of courage & development</p>
-  </div>
-</footer>
-
-<script>
-  // ----- slick interactions with modern JS
-  (function() {
-    // smooth scroll for internal links
-    const navLinks = document.querySelectorAll('.nav-links a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if(targetId && targetId.startsWith('#')) {
-          e.preventDefault();
-          const targetElement = document.querySelector(targetId);
-          if(targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-
-    // "Explore Legacy" button -> scroll to legacy section
-    const learnBtn = document.getElementById('learnMoreBtn');
-    if(learnBtn) {
-      learnBtn.addEventListener('click', () => {
-        const legacySection = document.getElementById('legacy');
-        if(legacySection) legacySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    }
-
-    // quote button - show random quote alert style but also change displayed quote gracefully
-    const quoteBtn = document.getElementById('quoteBtn');
-    const randomQuoteBtn = document.getElementById('randomQuoteBtn');
-    const quoteDisplay = document.getElementById('quoteDisplay');
+  <main class="container mx-auto px-5 md:px-8 py-10">
     
-    // iconic quotes collection from President Zia
-    const quotesList = [
-      { text: "Love and faith in the motherland, we shall build a happy and prosperous nation.", author: "President Ziaur Rahman" },
-      { text: "The spirit of the liberation war is the source of our strength and unity.", author: "Ziaur Rahman" },
-      { text: "Democracy, nationalism, socialism, and secularism – these ideals must guide Bangladesh.", author: "President Zia" },
-      { text: "Development begins with agriculture, but prosperity lies in industrialization.", author: "Ziaur Rahman" },
-      { text: "We must stand tall with self-respect and dignity before the world.", author: "President Zia" },
-      { text: "Unity among the people is the only shield against exploitation.", author: "Ziaur Rahman" },
-      { text: "The future belongs to those who believe in the beauty of their dreams for the nation.", author: "President Ziaur Rahman" }
+    <!-- Hero + 3D moving object row -->
+    <div class="flex flex-col lg:flex-row justify-between items-center gap-10 mb-20">
+      <div class="flex-1 space-y-5">
+        <h1 class="text-5xl md:text-6xl font-black leading-tight"><span class="text-amber-400">Ziaur Rahman</span><br>Bir Uttom</h1>
+        <p class="text-lg text-gray-300 border-l-4 border-amber-500 pl-4">7th President of Bangladesh • The architect of modern nationalism & economic revival</p>
+        <p class="text-gray-400 max-w-xl">Military hero, statesman, and founder of BNP. He declared independence in 1971, reconstructed Bangladesh after turmoil, and introduced the historic 19-point program for development.</p>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <!-- 3D moving object: rotating cube -->
+        <div class="scene-3d">
+          <div class="cube">
+            <div class="cube-face cube-face-front">
+              <img src="https://i.pinimg.com/474x/7c/e0/61/7ce061c8d8d4495dca35f82f4380411b.jpg" alt="Zia Front">
+            </div>
+
+            <div class="cube-face cube-face-back">
+              <img src="https://images.weserv.nl/?url=static.bonikbarta.com/original_images/9_6yAgYsy.jpg" alt="Zia Back">
+            </div>
+
+            <div class="cube-face cube-face-right">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Ziaur_Rahman.jpg/250px-Ziaur_Rahman.jpg" alt="Zia Right">
+            </div>
+
+            <div class="cube-face cube-face-left">
+              <img src="https://images.weserv.nl/?url=tadantachitra.com/wp-content/uploads/2021/01/IMG_20210119_132651.jpg" alt="Zia Left">
+            </div>
+
+            <div class="cube-face cube-face-top">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMoLg1RYfs1_eCjEVu6Us0oQFDDGIEhzA1A&s" alt="Top Face">
+            </div>
+
+            <div class="cube-face cube-face-bottom">
+              <img src="https://images.weserv.nl/?url=sangbadsarabela.com/uploads/2026/03/online/photos/1000243470-69a7c8ffc8f7a.jpg" alt="Bottom Face">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Biography Section -->
+    <section id="biography" class="glass-panel rounded-3xl p-6 md:p-8 mb-16">
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <img class="w-48 h-56 rounded-2xl object-cover shadow-xl border border-amber-500/40" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Bangladeshi_president_Ziaur_Rahman%2C_Bir_Uttom.jpg/500px-Bangladeshi_president_Ziaur_Rahman%2C_Bir_Uttom.jpg" alt="President Ziaur Rahman portrait" onerror="this.src='https://placehold.co/300x400/1e293b/c2a13f?text=Ziaur+Rahman'">
+        <div>
+          <h2 class="text-3xl font-bold mb-3"><i class="fas fa-user-graduate text-amber-400 mr-2"></i>Biography</h2>
+          <p class="mb-2 leading-relaxed"><strong>Ziaur Rahman</strong> (19 January 1936 – 30 May 1981) was a Bangladeshi military officer, freedom fighter, and politician. He served as the 7th President of Bangladesh from 1977 to 1981. As a sector commander during the Liberation War of 1971, he famously declared the independence of Bangladesh from Kalurghat Radio Station. After the assassination of Bangabandhu Sheikh Mujibur Rahman in 1975 and subsequent coups, Zia emerged as the strongman and later assumed presidency following a referendum. He introduced multi-party democracy, founded the Bangladesh Nationalist Party (BNP) in 1978, and implemented sweeping economic reforms.</p>
+          <p class="leading-relaxed">His leadership focused on food production, population control, rural development, and forging strong diplomatic ties with Muslim nations & SAARC. He was awarded Bir Uttom, Bangladesh's second-highest military honor. His legacy remains a cornerstone of Bangladeshi nationalism.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Revolution that led to Presidency -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <div class="bg-black/30 p-6 rounded-2xl border border-amber-800/30">
+        <h3 class="text-2xl font-bold flex items-center gap-2"><i class="fas fa-bolt text-amber-400"></i> Path to Presidency: Revolution & Transition</h3>
+        <p class="mt-3 text-gray-300">After the brutal assassination of Sheikh Mujibur Rahman in 1975, a series of military coups destabilized the nation. Major General Ziaur Rahman, then Chief of Army Staff, gradually consolidated power amidst political chaos. In November 1975, he became the Deputy Chief Martial Law Administrator, and by 1977, following a national referendum with overwhelming support, he assumed the presidency. His <strong>"Revolution of 1977"</strong> restored order, lifted martial law partially, and set Bangladesh on a democratic path. He later reintroduced parliamentary elections, bringing political stability.</p>
+      </div>
+      <div class="bg-black/30 p-6 rounded-2xl border border-amber-800/30">
+        <h3 class="text-2xl font-bold flex items-center gap-2"><i class="fas fa-tasks text-amber-400"></i> 19-Point Movement</h3>
+        <p class="mt-3 text-gray-300">In 1979, President Ziaur Rahman launched the historic <strong>19-point program</strong>—an ambitious socio-economic reform agenda. It focused on: food self-sufficiency, rural development, population control, expansion of primary education, boosting agriculture & irrigation, industrialization, women empowerment, combating corruption, and strengthening local government. This blueprint accelerated Bangladesh's growth and became the foundation of his political manifesto. The 19 Points electrified the rural masses and modernized the economy.</p>
+      </div>
+    </div>
+
+    <!-- Important things he did for country (dynamic cards generated by JS) -->
+    <section id="achievements" class="mb-16">
+      <h2 class="text-3xl font-bold text-center mb-10"><span class="border-b-4 border-amber-500 pb-2">Milestones & Nation Building</span></h2>
+      <div id="dynamicCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- cards injected via javascript for dynamic shuffling -->
+      </div>
+      <div class="text-center mt-8">
+        <button id="shuffleCardsBtn" class="bg-amber-700 hover:bg-amber-600 text-white px-6 py-2 rounded-full transition shadow-lg flex items-center gap-2 mx-auto"><i class="fas fa-random"></i> Shuffle Dynamic Cards</button>
+      </div>
+    </section>
+
+    <!-- 19 point detailed & achievements section integrated -->
+    <section id="19points" class="glass-panel rounded-3xl p-6 md:p-8 mb-16">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-center">
+        <i class="fas fa-list-ol text-amber-400"></i>
+        The Historic 19-Point Programme
+      </h2>
+
+      <p class="text-center text-gray-300 max-w-4xl mx-auto mb-8 leading-relaxed">
+        President Ziaur Rahman introduced the historic 19-point programme as a comprehensive blueprint for socio-economic development, self-reliance, democracy, justice, and national unity in Bangladesh.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-gray-200">
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">1.</span> To protect the independence, integrity and sovereignty of the country at all costs.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">2.</span> The four fundamental principles of the constitution — complete faith and trust in Almighty Allah, democracy, nationalism, and socialism of social and economic justice — are to be reflected in all aspects of national life.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">3.</span> To build ourselves into a self-reliant nation by all means.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">4.</span> Ensuring public participation in all levels of administration, development activities and maintenance of law and order.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">5.</span> Strengthening the rural and national economy through agricultural development on the basis of highest priority.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">6.</span> To make the country self-sufficient in food and ensure that no one goes hungry.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">7.</span> To increase the production of cloth in the country and ensure the supply of at least thick cloth for everyone.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">8.</span> To make every possible effort to ensure that no citizen is left homeless.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">9.</span> To free the country from the curse of illiteracy.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">10.</span> To provide minimum medical care for all citizens.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">11.</span> To establish the due status of women in society and to motivate the youth to build the nation by uniting them.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">12.</span> Providing necessary encouragement to the private sector for the economic development of the country.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">13.</span> To develop healthy labor-owner relations in the interest of improving the conditions of workers and increasing production.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">14.</span> To encourage public service and nation-building among government employees and to improve their financial condition.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">15.</span> Preventing population explosion.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">16.</span> To build friendship with all foreign countries on the basis of equality and to strengthen relations with Muslim countries.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">17.</span> Decentralize administration and development systems and strengthen local governments.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20">
+          <p><span class="text-amber-400 font-bold">18.</span> Establish a corruption-free, justice-based social system.</p>
+        </div>
+
+        <div class="bg-black/30 rounded-2xl p-4 border border-amber-700/20 md:col-span-2">
+          <p><span class="text-amber-400 font-bold">19.</span> To fully protect the rights of all citizens, regardless of religion, caste, or tribe, and to strengthen national unity and solidarity.</p>
+        </div>
+
+      </div>
+
+      <p class="mt-8 italic border-t border-amber-700/40 pt-4 text-center text-gray-300">
+        “Self-reliance, discipline, production, and national unity formed the foundation of Ziaur Rahman’s development philosophy.”
+      </p>
+    </section>
+
+    <!-- Family & political context: wife, son, current PM -->
+    <section id="family" class="grid md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm">
+        <i class="fas fa-female text-4xl text-amber-400 mb-3"></i>
+        <h3 class="text-xl font-bold">Begum Khaleda Zia</h3>
+        <p class="text-sm mt-2">Wife of President Zia, former Prime Minister of Bangladesh (1991–1996, 2001–2006). First female PM of Bangladesh, iconic BNP leader. Passed away in December 2025.</p>
+      </div>
+      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm">
+        <i class="fas fa-user-tie text-4xl text-amber-400 mb-3"></i>
+        <h3 class="text-xl font-bold">Tarique Rahman</h3>
+        <p class="text-sm mt-2">Son of Ziaur Rahman & Khaleda Zia. Senior Vice Chairman of BNP, influential political figure and Current PM of Bangladesh.</p>
+      </div>
+    </section>
+
+    <!-- Interactive Section: Random Story Generator + extra dynamic -->
+    <section id="interactive" class="mb-20">
+      <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-magic text-amber-400"></i> Interactive Zone</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Random Real Life Story Generator -->
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center gap-2 text-2xl font-semibold mb-4"><i class="fas fa-book-open text-amber-400"></i> Random Real Story</div>
+          <div id="storyDisplay" class="bg-black/40 p-5 rounded-xl border border-amber-700/40 min-h-[140px] text-gray-200 italic">
+            Click the button to discover a fascinating moment from Ziaur Rahman's life.
+          </div>
+          <button id="randomStoryBtn" class="mt-5 bg-amber-600 hover:bg-amber-500 transition px-5 py-2 rounded-full w-full font-semibold"><i class="fas fa-dice-d6"></i> Generate Random Story</button>
+        </div>
+        <!-- extra interactive 3d icon or fun fact + dynamic quote -->
+        <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-quote-right text-amber-400"></i> President's Vision</h3>
+            <p id="dynamicQuote" class="mt-3 text-gray-200 text-lg">"Love and faith in the motherland can build a prosperous nation."</p>
+          </div>
+          <button id="newQuoteBtn" class="mt-5 border border-amber-500/70 hover:bg-amber-800/30 px-4 py-2 rounded-full transition">New Inspiring Quote <i class="fas fa-sync-alt"></i></button>
+        </div>
+      </div>
+      <!-- dynamic extra: rotating 3d object is already above, but adding a small badge -->
+      <div class="flex justify-center mt-10">
+        <div class="bg-amber-500/80 text-black px-4 py-1 rounded-full text-sm font-medium shadow-lg animate-pulse">
+          🌟 Explore Zia's Legacy with Dynamic Content & 3D Elements!
+        </div>
+      </div>
+    </section>
+
+    <!-- Historical photo gallery with dynamic real images -->
+    <div class="border-t border-amber-800/40 pt-12">
+      <h2 class="text-2xl font-bold text-center mb-6">Moments in History</h2>
+      <div class="flex flex-wrap justify-center gap-5">
+        <img class="w-44 h-36 object-cover rounded-xl shadow-lg" src="https://www.bssnews.net/assets/news_photos/2026/01/18/image-352372-1768747375.jpg" alt="Zia 1979" onerror="this.src='https://placehold.co/200x150/2d3748/c2a13f?text=Zia+Portrait'">
+        <img class="w-44 h-36 object-cover rounded-xl shadow-lg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Jan_de_Koning%2C_Ziaur_Rahman%2C_Dries_van_Agt_1979.jpg/250px-Jan_de_Koning%2C_Ziaur_Rahman%2C_Dries_van_Agt_1979.jpg" alt="Zia with Reagan" onerror="this.src='https://placehold.co/200x150/2d3748/c2a13f?text=Diplomacy'">
+        <img class="w-44 h-36 object-cover rounded-xl shadow-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThFU-BxmuoNNP0t54ePQx0lprksCtMhJtbk0CN3n07Eg&s" alt="Zia addressing" onerror="this.src='https://placehold.co/200x150/2d3748/c2a13f?text=Public+Address'">
+        <img class="w-44 h-36 object-cover rounded-xl shadow-lg" src="https://ziaarchive.net/wp-content/uploads/2022/09/man-in-motion-featured.png?w=1200" alt="Khaleda Zia" onerror="this.src='https://placehold.co/200x150/2d3748/c2a13f?text=Khaleda+Zia'">
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-black/60 border-t border-amber-800/40 mt-16 py-8 text-center text-gray-400 text-sm">
+    <p>🇧🇩 Tribute to President Ziaur Rahman — Visionary leader, Hero of Liberation War, Architect of modern Bangladesh </p>
+    <p class="mt-2"><i class="fas fa-code"></i> All historical info for educational purpose</p>
+    <!-- authorship of the website -->
+    <p class="mt-2">Created with ❤️ for the people of Bangladesh by <a href="https://github.com/nnfuad" target="_blank" class="text-amber-400 hover:text-amber-300">fuad@ruet</a></p>
+  </footer>
+
+  <script>
+    // --- DYNAMIC CARDS DATA (important contributions) ---
+    const achievementsData = [
+      { title: "Economic Revival", desc: "Launched agricultural reforms, increased food production, and made Bangladesh self-reliant in rice by early 80s.", icon: "fas fa-chart-line" },
+      { title: "Formation of BNP", desc: "Founded Bangladesh Nationalist Party in 1978, establishing a center-right nationalist political force.", icon: "fas fa-flag-checkered" },
+      { title: "Gram Sarkar", desc: "Introduced local governance system ‘Gram Sarkar’ to empower villages and grassroots democracy.", icon: "fas fa-village" },
+      { title: "SAARC Initiative", desc: "Played pivotal role in founding SAARC (South Asian Association for Regional Cooperation) in 1980.", icon: "fas fa-handshake" },
+      { title: "19-Point Program", desc: "Revolutionary socio-economic charter boosting agriculture, population control & industrialization.", icon: "fas fa-list" },
+      { title: "Multi-party Democracy", desc: "Lifted martial law and restored parliamentary democracy after years of military rule.", icon: "fas fa-vote-yea" },
+      { title: "Independence Declaration", desc: "Declared Bangladesh's independence on March 27, 1971 (as acting president) inspiring freedom fighters.", icon: "fas fa-bullhorn" },
+      { title: "Foreign Policy Shift", desc: "Strengthened ties with OIC & Middle East, opened Bangladesh to the global stage.", icon: "fas fa-globe-asia" }
     ];
-    
-    function setRandomQuote() {
-      const randomIndex = Math.floor(Math.random() * quotesList.length);
-      const selected = quotesList[randomIndex];
-      quoteDisplay.textContent = `"${selected.text}"`;
-      const authorSpan = document.querySelector('#dynamicQuoteBlock .quote-author');
-      if(authorSpan) authorSpan.innerHTML = `— ${selected.author}`;
-    }
-    
-    if(quoteBtn) {
-      quoteBtn.addEventListener('click', () => {
-        setRandomQuote();
-        // subtle animation effect: pulse on quote container
-        const quoteBlock = document.getElementById('dynamicQuoteBlock');
-        quoteBlock.style.transform = 'scale(1.01)';
-        setTimeout(() => { if(quoteBlock) quoteBlock.style.transform = ''; }, 200);
+
+    let currentCards = [...achievementsData];
+
+    function renderDynamicCards() {
+      const container = document.getElementById('dynamicCardsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      currentCards.forEach(card => {
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'dynamic-card bg-gray-800/60 border border-amber-700/30 rounded-2xl p-5 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm';
+        cardDiv.innerHTML = `
+          <div class="text-3xl text-amber-400 mb-3"><i class="${card.icon}"></i></div>
+          <h3 class="text-xl font-bold mb-2">${card.title}</h3>
+          <p class="text-gray-300 text-sm">${card.desc}</p>
+        `;
+        container.appendChild(cardDiv);
       });
     }
-    
-    if(randomQuoteBtn) {
-      randomQuoteBtn.addEventListener('click', setRandomQuote);
-    }
-    
-    // set default quote on load in case it didn't display
-    setRandomQuote();
-    
-    // Dynamic year effect for footer (just for slick)
-    const footerPara = document.querySelector('footer p:first-child');
-    if(footerPara && !footerPara.innerText.includes('2026')) {
-      // optional: no extra required but we keep modern feel
-    }
-    
-    // hover effect on hero image smooth parallax - tiny extra slick
-    const heroImg = document.querySelector('.hero-image img');
-    if(heroImg) {
-      heroImg.addEventListener('mouseenter', () => {
-        heroImg.style.transform = 'scale(1.02)';
-        heroImg.style.transition = '0.3s';
-      });
-      heroImg.addEventListener('mouseleave', () => {
-        heroImg.style.transform = 'scale(1)';
-      });
-    }
-    
-    // gallery image interactive with light effect (optional)
-    const galleryImgs = document.querySelectorAll('.gallery-card img');
-    galleryImgs.forEach(img => {
-      img.addEventListener('click', () => {
-        // slick mini enlarge effect with alert disabled - just show subtle zoom?
-        img.style.transform = 'scale(1.03)';
-        setTimeout(() => { img.style.transform = ''; }, 200);
-        // console fancy
-      });
-    });
-    
-    // Back to top floating sense? adding small dynamic button but not mandatory for slick minimal
-    // make navbar background increase on scroll
-    const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
-      if(window.scrollY > 60) {
-        navbar.style.background = 'rgba(5, 7, 12, 0.9)';
-        navbar.style.backdropFilter = 'blur(20px)';
-      } else {
-        navbar.style.background = 'rgba(10, 12, 16, 0.75)';
-        navbar.style.backdropFilter = 'blur(16px)';
+
+    function shuffleCards() {
+      for (let i = currentCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentCards[i], currentCards[j]] = [currentCards[j], currentCards[i]];
       }
-    });
-    
-    // Interactive stat cards with console greeting not intrusive
-    const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.querySelector('h3')?.innerText;
-        if(title) {
-          // smooth popup without alert disruption - just small tooltip style (simple)
-          const tooltip = document.createElement('div');
-          tooltip.innerText = `✨ ${title} legacy ✨`;
-          tooltip.style.position = 'fixed';
-          tooltip.style.bottom = '20px';
-          tooltip.style.left = '50%';
-          tooltip.style.transform = 'translateX(-50%)';
-          tooltip.style.backgroundColor = '#C2A13F';
-          tooltip.style.color = '#0a0c10';
-          tooltip.style.padding = '8px 20px';
-          tooltip.style.borderRadius = '50px';
-          tooltip.style.fontWeight = '600';
-          tooltip.style.fontSize = '0.85rem';
-          tooltip.style.zIndex = '999';
-          tooltip.style.opacity = '0.9';
-          tooltip.style.backdropFilter = 'blur(4px)';
-          document.body.appendChild(tooltip);
-          setTimeout(() => { tooltip.remove(); }, 1700);
+      renderDynamicCards();
+    }
+
+    // Random Real Life Stories (true incidents / inspiring moments)
+    const storyPool = [
+      "In 1971, Ziaur Rahman, as a major in Pakistan Army, rebelled and formed sector 11 of Mukti Bahini. He bravely led guerrilla warfare against Pakistani forces in Chittagong region.",
+      "On 27 March 1971, Major Zia read the declaration of independence on behalf of Bangabandhu from Kalurghat radio station — a voice that ignited the nation's fight for freedom.",
+      "During his presidency, Zia visited remote villages to monitor food production, often sleeping in simple farmers' homes, earning him 'Shah Jahan' (leader of masses).",
+      "President Zia introduced ‘Food for Work’ program in late 1970s, drastically reducing famine risks and creating rural employment.",
+      "Despite assassination attempts, Zia remained steadfast. He opened diplomatic ties with China & strengthened US-Bangladesh relations during Cold War.",
+      "Ziaur Rahman formulated the National Population Policy 1978, one of Asia's earliest systematic family planning programs.",
+      "In 1980, President Zia laid foundation of Bangladesh Institute of Bank Management (BIBM) and numerous rural hospitals.",
+      "When Zia introduced the 19-point program, he toured every district on a helicopter to gather grassroots feedback — a display of true populist leadership."
+    ];
+
+    const quoteArray = [
+      "“Love for the motherland and its people is the essence of all politics.”",
+      "“We shall build a happy and prosperous nation with our own resources and labor.”",
+      "“The dream of a golden Bengal will be realized through unity & hard work.”",
+      "“Nationalism, democracy, socialism and secularism — we uphold the spirit of 1971.”",
+      "“Development begins at the village level; take care of rural people, and the nation thrives.”"
+    ];
+
+    // Random story generator
+    const storyDisplayDiv = document.getElementById('storyDisplay');
+    const randomStoryBtn = document.getElementById('randomStoryBtn');
+    function generateRandomStory() {
+      const randomIndex = Math.floor(Math.random() * storyPool.length);
+      storyDisplayDiv.innerHTML = `📖 <span class="font-medium text-amber-300">Real Life Story:</span> ${storyPool[randomIndex]}`;
+    }
+    if(randomStoryBtn) randomStoryBtn.addEventListener('click', generateRandomStory);
+
+    // random quote section
+    const dynamicQuoteSpan = document.getElementById('dynamicQuote');
+    const newQuoteBtn = document.getElementById('newQuoteBtn');
+    function setRandomQuote() {
+      const idx = Math.floor(Math.random() * quoteArray.length);
+      dynamicQuoteSpan.textContent = quoteArray[idx];
+    }
+    if(newQuoteBtn) newQuoteBtn.addEventListener('click', setRandomQuote);
+
+    // Shuffle button event
+    const shuffleBtn = document.getElementById('shuffleCardsBtn');
+    if(shuffleBtn) shuffleBtn.addEventListener('click', shuffleCards);
+
+    // initial load
+    renderDynamicCards();
+    generateRandomStory();  // set initial story
+    setRandomQuote();
+
+    // Optional: add interaction for 3d cube? Already animated. 
+    // Additional content: ensure all sections with images loading reliable - no extra needed.
+
+    // Extra dynamic: any time click on card shows toast? just small console but nice to have alert free
+    // Add a hidden fun fact: Buttons smooth 
+    console.log("Dynamic Tribute: President Ziaur Rahman | 3D interactive & dynamic cards ready");
+
+    // fix any external image fallback behavior
+    const allImages = document.querySelectorAll('img');
+    allImages.forEach(img => {
+      img.addEventListener('error', function() {
+        if(!this.dataset.fallbackSet) {
+          // to have multiple fallback attempts if needed, we can cycle through a list of placeholders:
+            const fallbackUrls = [
+                'https://images.ekhon.tv/Zia-768x402.webp',
+                '',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwMoLg1RYfs1_eCjEVu6Us0oQFDDGIEhzA1A&s'
+            ];
+            const currentFallback = this.dataset.fallbackIndex ? parseInt(this.dataset.fallbackIndex) : 0;
+          this.dataset.fallbackSet = 'true';
         }
       });
     });
-  })();
-</script>
+  </script>
 </body>
 </html>
