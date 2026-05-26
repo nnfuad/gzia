@@ -118,7 +118,7 @@
   <!-- Navigation Sticky -->
   <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-lg border-b border-yellow-700/30 py-4">
     <div class="container mx-auto px-6 flex flex-wrap justify-between items-center">
-      <div class="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">🇧🇩 PRESIDENT ZIA</div>
+      <div class="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"> PRESIDENT ZIA</div>
       <div class="flex gap-6 text-sm font-medium">
         <a href="#biography" class="hover:text-amber-400 transition">Life</a>
         <a href="#achievements" class="hover:text-amber-400 transition">Legacy</a>
@@ -302,32 +302,32 @@
     </section>
 
     <!-- Family & political context: wife, son, current PM -->
-    <section id="family" class="grid md:grid-cols-3 gap-6 mb-16">
-      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm">
-        <i class="fas fa-female text-4xl text-amber-400 mb-3"></i>
+    <section id="family" class="grid md:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto place-items-center">
+      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm w-full max-w-md">
+        <img class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border border-amber-500/40" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnoFcUg-eFTYXbz0S_vGpCt6QUUClM_sw3eA&s" alt="Khaleda Zia" onerror="this.src='https://placehold.co/80x80/1e293b/c2a13f?text=Khaleda'">
         <h3 class="text-xl font-bold">Begum Khaleda Zia</h3>
         <p class="text-sm mt-2">Wife of President Zia, former Prime Minister of Bangladesh (1991–1996, 2001–2006). First female PM of Bangladesh, iconic BNP leader. Passed away in December 2025.</p>
       </div>
-      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm">
-        <i class="fas fa-user-tie text-4xl text-amber-400 mb-3"></i>
+      <div class="bg-gray-900/60 p-5 rounded-xl text-center backdrop-blur-sm w-full max-w-md">
+        <img class="w-20 h-20 rounded-full mx-auto mb-3 object-cover border border-amber-500/40" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Prime_Minister_Tarique_Rahman_addressing_13th_National_Parliament%2C_Dhaka%2C_2026-03-12_%28cropped%29.jpg/250px-Prime_Minister_Tarique_Rahman_addressing_13th_National_Parliament%2C_Dhaka%2C_2026-03-12_%28cropped%29.jpg" alt="Tarique Rahman" onerror="this.src='https://placehold.co/80x80/1e293b/c2a13f?text=Tarique'">
         <h3 class="text-xl font-bold">Tarique Rahman</h3>
         <p class="text-sm mt-2">Son of Ziaur Rahman & Khaleda Zia. Senior Vice Chairman of BNP, influential political figure and Current PM of Bangladesh.</p>
       </div>
     </section>
 
     <!-- Interactive Section: Random Story Generator + extra dynamic -->
-    <section id="interactive" class="mb-20">
+    <section id="interactive" class="mb-20 max-w-5xl mx-auto">
       <h2 class="text-3xl font-bold text-center mb-8"><i class="fas fa-magic text-amber-400"></i> Interactive Zone</h2>
-      <div class="grid md:grid-cols-2 gap-8">
+      <div class="grid md:grid-cols-1 gap-8 place-items-center">
         <!-- Random Real Life Story Generator -->
-        <div class="glass-panel rounded-2xl p-6">
+        <div class="glass-panel rounded-2xl p-6 w-full max-w-2xl mx-auto text-center">
           <div class="flex items-center gap-2 text-2xl font-semibold mb-4"><i class="fas fa-book-open text-amber-400"></i> Random Real Story</div>
           <div id="storyDisplay" class="bg-black/40 p-5 rounded-xl border border-amber-700/40 min-h-[140px] text-gray-200 italic">
             Click the button to discover a fascinating moment from Ziaur Rahman's life.
           </div>
           <button id="randomStoryBtn" class="mt-5 bg-amber-600 hover:bg-amber-500 transition px-5 py-2 rounded-full w-full font-semibold"><i class="fas fa-dice-d6"></i> Generate Random Story</button>
         </div>
-        <!-- extra interactive 3d icon or fun fact + dynamic quote -->
+        <!-- extra interactive 3d icon or fun fact + dynamic quote
         <div class="glass-panel rounded-2xl p-6 flex flex-col justify-between">
           <div>
             <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-quote-right text-amber-400"></i> President's Vision</h3>
@@ -335,13 +335,13 @@
           </div>
           <button id="newQuoteBtn" class="mt-5 border border-amber-500/70 hover:bg-amber-800/30 px-4 py-2 rounded-full transition">New Inspiring Quote <i class="fas fa-sync-alt"></i></button>
         </div>
-      </div>
+      </div> -->
       <!-- dynamic extra: rotating 3d object is already above, but adding a small badge -->
-      <div class="flex justify-center mt-10">
+      <!-- <div class="flex justify-center mt-10">
         <div class="bg-amber-500/80 text-black px-4 py-1 rounded-full text-sm font-medium shadow-lg animate-pulse">
           🌟 Explore Zia's Legacy with Dynamic Content & 3D Elements!
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- Historical photo gallery with dynamic real images -->
@@ -432,13 +432,13 @@
     if(randomStoryBtn) randomStoryBtn.addEventListener('click', generateRandomStory);
 
     // random quote section
-    const dynamicQuoteSpan = document.getElementById('dynamicQuote');
-    const newQuoteBtn = document.getElementById('newQuoteBtn');
-    function setRandomQuote() {
-      const idx = Math.floor(Math.random() * quoteArray.length);
-      dynamicQuoteSpan.textContent = quoteArray[idx];
-    }
-    if(newQuoteBtn) newQuoteBtn.addEventListener('click', setRandomQuote);
+   // const dynamicQuoteSpan = document.getElementById('dynamicQuote');
+   // const newQuoteBtn = document.getElementById('newQuoteBtn');
+   // function setRandomQuote() {
+   //   const idx = Math.floor(Math.random() * quoteArray.length);
+   //   dynamicQuoteSpan.textContent = quoteArray[idx];
+   // }
+   // if(newQuoteBtn) newQuoteBtn.addEventListener('click', setRandomQuote);
 
     // Shuffle button event
     const shuffleBtn = document.getElementById('shuffleCardsBtn');
