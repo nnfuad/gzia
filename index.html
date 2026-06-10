@@ -116,16 +116,39 @@
 <body class="text-gray-200">
 
   <!-- Navigation Sticky -->
+<!-- Navigation Sticky -->
   <nav class="sticky top-0 z-50 bg-black/60 backdrop-blur-lg border-b border-yellow-700/30 py-4">
-    <div class="container mx-auto px-6 flex flex-wrap justify-between items-center">
-      <div class="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"> PRESIDENT ZIA</div>
-      <div class="flex gap-6 text-sm font-medium">
-        <a href="#biography" class="hover:text-amber-400 transition">Life</a>
-        <a href="#achievements" class="hover:text-amber-400 transition">Legacy</a>
-        <a href="#19points" class="hover:text-amber-400 transition">19-Point</a>
-        <a href="#family" class="hover:text-amber-400 transition">Family & Politics</a>
-        <a href="#interactive" class="hover:text-amber-400 transition">Interactive</a>
+    <div class="container mx-auto px-6 flex justify-between items-center flex-nowrap">
+      
+      <!-- Logo/Title -->
+      <div class="text-2xl font-extrabold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent shrink-0">
+        PRESIDENT ZIA
       </div>
+      
+      <!-- Right-Side items (Menu Links + Luminous Button) -->
+      <div class="flex items-center gap-8">
+        <!-- Navigation Links -->
+        <div class="hidden md:flex gap-6 text-sm font-medium">
+          <a href="#biography" class="hover:text-amber-400 transition">Life</a>
+          <a href="#achievements" class="hover:text-amber-400 transition">Legacy</a>
+          <a href="#19points" class="hover:text-amber-400 transition">19-Point</a>
+          <a href="#family" class="hover:text-amber-400 transition">Family & Politics</a>
+          <a href="#interactive" class="hover:text-amber-400 transition">Interactive</a>
+        </div>
+        
+        <!-- Luminous Yellow Research Button -->
+        <a href="https://colab.research.google.com/drive/1eJXvGZyxpIiwlYSrq2TtvnjCT2yGzlaX?usp=sharing" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 text-black font-bold text-xs uppercase tracking-wider rounded-full shadow-[0_0_15px_rgba(234,179,8,0.6)] hover:shadow-[0_0_25px_rgba(234,179,8,0.9)] border border-yellow-300/50 transition-all duration-300 transform hover:-translate-y-0.5 shrink-0">
+          <!-- Small SVG icon of a code notebook -->
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          Research Notebook
+        </a>
+      </div>
+
     </div>
   </nav>
 
@@ -403,24 +426,26 @@
     }
 
     // Random Real Life Stories (true incidents / inspiring moments)
-    const storyPool = [
-      "In 1971, Ziaur Rahman, as a major in Pakistan Army, rebelled and formed sector 11 of Mukti Bahini. He bravely led guerrilla warfare against Pakistani forces in Chittagong region.",
-      "On 27 March 1971, Major Zia read the declaration of independence on behalf of Bangabandhu from Kalurghat radio station — a voice that ignited the nation's fight for freedom.",
-      "During his presidency, Zia visited remote villages to monitor food production, often sleeping in simple farmers' homes, earning him 'Shah Jahan' (leader of masses).",
-      "President Zia introduced ‘Food for Work’ program in late 1970s, drastically reducing famine risks and creating rural employment.",
-      "Despite assassination attempts, Zia remained steadfast. He opened diplomatic ties with China & strengthened US-Bangladesh relations during Cold War.",
-      "Ziaur Rahman formulated the National Population Policy 1978, one of Asia's earliest systematic family planning programs.",
-      "In 1980, President Zia laid foundation of Bangladesh Institute of Bank Management (BIBM) and numerous rural hospitals.",
-      "When Zia introduced the 19-point program, he toured every district on a helicopter to gather grassroots feedback — a display of true populist leadership."
-    ];
+const storyPool = [
+  "In March 1971, Major Ziaur Rahman revolted against the Pakistan Army, successfully securing the Chittagong region under Sector 1 before later raising the historic 'Z Force' brigade to command Sector 11.",
+  "On 27 March 1971, Major Zia read the declaration of independence on behalf of Bangabandhu from Kalurghat radio station — a voice that ignited the nation's fight for freedom.",
+  "During his presidency, Zia frequently went on unannounced 'Night Safaris,' walking miles on foot through remote villages with a flashlight to talk directly to peasants and inspect rural infrastructure.",
+  "In the late 1970s, President Zia massively expanded the ‘Food for Work’ program into a robust nationwide initiative, drastically reducing rural famine risks and building thousands of miles of rural roads.",
+  "Despite assassination attempts, Zia remained steadfast. He opened diplomatic ties with China & strengthened US-Bangladesh relations during the Cold War.",
+  "Ziaur Rahman formulated the landmark National Population Policy in 1976, deploying a massive network of grassroots healthcare workers to establish one of Asia's earliest systematic family planning programs.",
+  "In 1979, President Zia launched the 'Canal Digging Revolution,' picking up a spade himself to work alongside thousands of villagers to manually re-excavate over 1,200 miles of irrigation canals.",
+  "To transform the economy, Zia's administration introduced back-to-back LCs and bonded warehouses in the late 1970s, laying the foundational framework for Bangladesh's multi-billion dollar garment (RMG) industry.",
+  "In 1980, President Ziaur Rahman envisioned a united, peaceful neighborhood and formally proposed the creation of SAARC, historically cementing himself as the chief architect of South Asian regional cooperation.",
+  "When Zia introduced his 19-point development program, he toured every single district of Bangladesh to gather grassroots feedback directly from the public — a display of true populist leadership."
+];
 
-    const quoteArray = [
-      "“Love for the motherland and its people is the essence of all politics.”",
-      "“We shall build a happy and prosperous nation with our own resources and labor.”",
-      "“The dream of a golden Bengal will be realized through unity & hard work.”",
-      "“Nationalism, democracy, socialism and secularism — we uphold the spirit of 1971.”",
-      "“Development begins at the village level; take care of rural people, and the nation thrives.”"
-    ];
+    // const quoteArray = [
+    //   "“Love for the motherland and its people is the essence of all politics.”",
+    //   "“We shall build a happy and prosperous nation with our own resources and labor.”",
+    //   "“The dream of a golden Bengal will be realized through unity & hard work.”",
+    //   "“Nationalism, democracy, socialism and secularism — we uphold the spirit of 1971.”",
+    //   "“Development begins at the village level; take care of rural people, and the nation thrives.”"
+    // ];
 
     // Random story generator
     const storyDisplayDiv = document.getElementById('storyDisplay');
